@@ -22,7 +22,34 @@
 	 </head>
 
 	<body>
-		<div id="chart"></div>
-		<button id="filechart" style="position: relative;" onclick="chart()">Click me</button>
+		<form>
+			<p>aaa</p>
+			<select id="college-list" onchange="changeCollege(this.selectedIndex)"></select>
+      <p>bbb</p>
+			<select id="sectorlist"></select>
+		</form>
+		<button id="filechart" style="position: relative;" onclick="chart(value)">Apply</button>
+		<button id="refresh" onclick="refresh()">Refresh the page</button>
 	</body>
+	<script type="text/javascript">
+			var colleges=['Trust','God'];
+			var collegeSelect=document.getElementById("college-list");
+			var inner="";
+			for(var i=0;i<colleges.length;i++){
+				inner=inner+'<option value=i>'+colleges[i]+'</option>';
+			}
+			collegeSelect.innerHTML=inner;
+			var sectors=new Array();
+			sectors[0]=['1995-1999', '2000-2004', '2005-2009', '2010-2014'];
+			sectors[1]=['???'];function changeCollege(index){
+				var Sinner="";
+				for(var i=0;i<sectors[index].length;i++){
+					Sinner=Sinner+'<option value=i>'+sectors[index][i]+'</option>';
+				}
+				var sectorSelect=document.getElementById("sectorlist");
+				sectorSelect.innerHTML=Sinner;
+			}
+			changeCollege(document.getElementById("college-list").selectedIndex);
+
+		</script>
 </html>

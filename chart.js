@@ -1,5 +1,8 @@
-function chart() {
-  var svg = d3.select("svg"),
+function refresh() {
+  location.reload();
+}
+function chart(value) {
+var svg = d3.select("svg"),
         //margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = +svg.attr("width") - 40 - 20,
         height = +svg.attr("height") - 20 - 30,
@@ -18,7 +21,7 @@ function chart() {
     var z = d3.scaleOrdinal()
         .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-    d3.csv("data.csv", function(d, i, columns) {
+    d3.csv($('#sectorlist :selected').text()+".csv", function(d, i, columns) {
       for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
       return d;
     }, function(error, data) {
@@ -82,4 +85,3 @@ function chart() {
           .text(function(d) { return d; });
     });
 }
-    
